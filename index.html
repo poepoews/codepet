@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes Boss Pet - Home</title>
+    <link rel="stylesheet" href="INDEX.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="Pet Shop Logo" style="height: 65px;">
+        <div id="current-time" style="color: white; font-size: 18px;" left-padding="0"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="product.html">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a id="loginButton" class="login-btn" onclick="showLoginModal()">Login</a>
+        </nav>
+    </header>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <input type="text" id="usernameInput" placeholder="Enter your name" />
+            <button onclick="submitLogin()">Submit</button>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="pompuan.png" alt="Happy Pets" width="60" height="50">
+    </div>
+
+    <main>
+        <h1>Welcome to Our Pet Shop!</h1>
+        <p>Your one-stop shop for all your pet needs. From food to toys, grooming services to adoption programs, we have everything to make your furry friend happy!</p>
+        <div class="cta-buttons">
+            <a href="product.html">Shop Now</a>
+            <a href="blog.html">Pet tips</a>
+        </div>
+
+        <div id="greeting" class="user-greeting"></div>
+
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <blockquote>
+                <p>"Great selection of products and friendly staff!"</p>
+                <cite>- Happy Customer</cite>
+            </blockquote>
+        </section>
+
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <h2>Login</h2>
+                <input type="text" id="usernameInput" placeholder="Enter your name" />
+                <button onclick="submitLogin()">Submit</button>
+            </div>
+        </div>
+
+        <table class="product-table">
+            <tr>
+                <th>Products for Cats</th>
+                <th>Products for Dogs</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="product-category">
+                        <div>
+                            <h3><a href="product.html#cat-food" style="text-decoration: none; color: inherit;">Food</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#cat-hygiene" style="text-decoration: none; color: inherit;">Hygiene</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#cat-healthcare" style="text-decoration: none; color: inherit;">Healthcare</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#cat-toys" style="text-decoration: none; color: inherit;">Toys</a></h3>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="product-category">
+                        <div>
+                            <h3><a href="product.html#dog-food" style="text-decoration: none; color: inherit;">Food</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#dog-hygiene" style="text-decoration: none; color: inherit;">Hygiene</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#dog-healthcare" style="text-decoration: none; color: inherit;">Healthcare</a></h3>
+                        </div>
+                        <div>
+                            <h3><a href="product.html#dog-toys" style="text-decoration: none; color: inherit;">Toys</h3>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="image-links">
+        <a href="product.html"> <img src="poster 1.png" alt="Image 1" height="700"></a>
+        <a href="product.html"> <img src="poster 2.png" alt="Image 2" height="700"></a>
+        <a href="product.html"> <img src="poster 3.png" alt="Image 3" height="700"></a>
+        <a href="product.html"> <img src="poster 4.png" alt="Image 4" height="700"></a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pet Shop. All Rights Reserved.</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="insta.webp" alt="Instagram"></a>
+            <a href="https://www.x.com/"><img src="twitter.png" alt="Twitter"></a>
+            <br>
+        </div>
+        <p id="date-time"></p>
+
+    </footer>
+
+    <script>
+     let userName = "";
+
+    function showLoginModal() {
+        const modal = document.getElementById("loginModal");
+        modal.style.display = "block";
+    }
+
+    function submitLogin() {
+        const usernameInput = document.getElementById("usernameInput").value.trim();
+        if (usernameInput) {
+            userName = usernameInput;
+            const loginButton = document.getElementById("loginButton");
+            loginButton.textContent = userName;
+            document.getElementById("loginModal").style.display = "none";
+            alert(`Welcome, ${userName}!`);
+        } else {
+            alert("Please enter a name.");
+        }
+    }
+
+    function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const dateTimeString = now.toLocaleDateString('en-US', options);
+        document.getElementById('date-time').textContent = dateTimeString;
+    }
+
+    setInterval(updateDateTime, 1000);
+
+    updateDateTime();
+    </script>
+</body>
+</html>
